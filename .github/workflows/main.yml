@@ -29,10 +29,12 @@ jobs:
           -user=${{ secrets.DB_USER }} \
           -password=${{ secrets.DB_PASSWORD }} \
           -db=${{ secrets.DB_NAME }}
-    - name: Run Flyway migrations
-      run: |
-        flyway -url="jdbc:postgresql://${{ secrets.DB_HOST }}:${{ secrets.DB_PORT }}/store" \
-               -user="${{ secrets.DB_USER }}" \
-               -password="${{ secrets.DB_PASSWORD }}" \
-               migrate
+     - name: Apply migrations with Docker
+       run: |
+         docker pull flyway/flyway
+         docker run --rm -v $(pwd)/migrations:/flyway/sql flyway/flyway migrate \
+         -url=jdbc:postgresql://${{ secrets.DB_HOST }}:${{ secrets.DB_PORT }}/${{ secrets.DB_NAME }} \
+         -user=${{ secrets.DB_USER }} \
+         -password=${{ secrets.DB_PASSWORD }}
+
 
