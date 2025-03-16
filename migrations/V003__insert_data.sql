@@ -7,6 +7,7 @@ VALUES
     (4, 'Нюренбергская', 'https://res.cloudinary.com/sugrobov/image/upload/v1623323635/repos/sausages/3.jpg', 315.00),
     (5, 'Мюнхенская', 'https://res.cloudinary.com/sugrobov/image/upload/v1623323635/repos/sausages/2.jpg', 330.00),
     (6, 'Русская', 'https://res.cloudinary.com/sugrobov/image/upload/v1623323635/repos/sausages/1.jpg', 189.00);
+ON CONFLICT (id) DO NOTHING;
 
 -- 2. Вставляем данные в таблицу orders
 -- Генерируем 100000 заказов, где:
