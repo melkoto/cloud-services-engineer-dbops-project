@@ -29,3 +29,6 @@ jobs:
           -user=${{ secrets.DB_USER }} \
           -password=${{ secrets.DB_PASSWORD }} \
           -db=${{ secrets.DB_NAME }}
+    - name: Run Flyway migrations
+      run: flyway -url="jdbc:postgresql://${{ secrets.DB_HOST }}:${{ secrets.DB_PORT }}/store" -user="${{ secrets.DB_USER }}" -password="${{ secrets.DB_PASSWORD }}" migrate
+

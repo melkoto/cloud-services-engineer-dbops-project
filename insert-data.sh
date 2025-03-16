@@ -1,4 +1,4 @@
-#!/bin/bash
+XX#!/bin/bash
 
 PSQL_ADMIN="user"
 PSQL_PASSWORD="password"
