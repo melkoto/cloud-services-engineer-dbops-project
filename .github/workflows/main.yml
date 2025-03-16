@@ -19,6 +19,7 @@ jobs:
         -user=${{ secrets.DB_USER }} \
         -password=${{ secrets.DB_PASSWORD }}
         -baselineOnMigrate=true
+        -baselineVersion=1
 
     ### Этот шаг оставьте без изменений
     - name: Download and setup autotests binaries
